@@ -215,4 +215,72 @@ h2{
   .info h3{
     font-size:1rem;
   }
+  /* VHS Scanlines */
+.scanlines{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+  repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.03) 4px
+  );
+  z-index:999;
+}
+
+/* Blinking REC */
+.rec{
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%{opacity:1;}
+  50%{opacity:.3;}
+  100%{opacity:1;}
+}
+
+/* Better Countdown Glow */
+.box span{
+  text-shadow:
+    0 0 10px #ffb300,
+    0 0 20px #ffb300,
+    0 0 40px #ffb300,
+    0 0 60px #ffb300;
+}
+
+/* Hover Animation */
+.box{
+  transition:.3s;
+}
+
+.box:hover{
+  transform:translateY(-8px);
+  box-shadow:
+    0 0 20px #ffb300,
+    0 0 50px rgba(255,179,0,.6);
+}
+
+/* KAIROS Glow */
+h2{
+  animation:logoGlow 2s infinite alternate;
+}
+
+@keyframes logoGlow{
+  from{
+    text-shadow:0 0 10px #ffb300;
+  }
+
+  to{
+    text-shadow:
+      0 0 20px #ffb300,
+      0 0 50px #ffb300;
+  }
+}
+
+/* Prevent scrolling */
+body{
+  overflow:hidden;
+}
 }
