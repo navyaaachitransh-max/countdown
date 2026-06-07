@@ -6,6 +6,15 @@ function updateCountdown() {
   const now = new Date().getTime();
   const distance = targetDate - now;
 
+  // Event has started
+  if (distance <= 0) {
+
+    document.querySelector(".countdown").innerHTML =
+    "<h2>KAIROS IS LIVE 🎉</h2>";
+
+    return;
+  }
+
   const days =
   Math.floor(distance / (1000 * 60 * 60 * 24));
 
