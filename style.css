@@ -9,17 +9,38 @@ body{
 
   background:
   linear-gradient(
-    rgba(0,0,0,0.45),
-    rgba(0,0,0,0.45)
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.45)
   ),
   url("background.png");
 
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
+  background-attachment:fixed;
 
   color:white;
   font-family:Georgia, serif;
+
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+.scanlines{
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+  repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,.03) 4px
+  );
+
+  z-index:999;
 }
 
 .overlay{
@@ -28,46 +49,36 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
 
   text-align:center;
-  padding:30px;
+
+  padding:120px 20px 60px;
 }
 
 .rec{
-  position:absolute;
-  top:25px;
-  left:25px;
+  position:fixed;
+  top:20px;
+  left:20px;
 
   color:#ff4d4d;
-  font-size:1.4rem;
+  font-size:1.2rem;
   font-weight:bold;
 
   animation:blink 1s infinite;
 }
 
-@keyframes blink{
+.clock{
+  position:fixed;
+  top:55px;
+  left:20px;
 
-  0%{
-    opacity:1;
-  }
-
-  50%{
-    opacity:.3;
-  }
-
-  100%{
-    opacity:1;
-  }
+  font-size:1rem;
 }
 
-.clock{
-  position:absolute;
-  top:60px;
-  left:25px;
-
-  color:white;
-  font-size:1.2rem;
+@keyframes blink{
+  0%{opacity:1;}
+  50%{opacity:.3;}
+  100%{opacity:1;}
 }
 
 .stay-tuned{
@@ -83,8 +94,8 @@ body{
   margin-top:20px;
 
   color:#ffb300;
-  letter-spacing:8px;
-  font-size:1.2rem;
+
+  letter-spacing:6px;
 }
 
 .countdown{
@@ -111,18 +122,26 @@ body{
 
   backdrop-filter:blur(5px);
 
+  transition:.3s;
+
   box-shadow:
   0 0 10px #ffb300,
-  0 0 25px rgba(255,179,0,0.4);
+  0 0 25px rgba(255,179,0,.4);
+}
+
+.box:hover{
+  transform:translateY(-6px);
 }
 
 .box span{
   font-size:4rem;
+
   color:#ffb300;
 
   text-shadow:
-  0 0 10px #ffb300,
-  0 0 25px #ffb300;
+    0 0 10px #ffb300,
+    0 0 20px #ffb300,
+    0 0 40px #ffb300;
 }
 
 .box small{
@@ -142,15 +161,26 @@ h2{
 
   color:#ffb300;
 
-  text-shadow:
-  0 0 15px #ffb300,
-  0 0 35px #ffb300;
+  animation:logoGlow 2s infinite alternate;
+}
+
+@keyframes logoGlow{
+
+  from{
+    text-shadow:0 0 10px #ffb300;
+  }
+
+  to{
+    text-shadow:
+    0 0 20px #ffb300,
+    0 0 50px #ffb300;
+  }
 }
 
 .tagline{
   margin-top:10px;
 
-  font-size:1.5rem;
+  font-size:1.4rem;
   font-style:italic;
 }
 
@@ -167,7 +197,7 @@ h2{
 }
 
 .info div{
-  padding:25px;
+  padding:20px;
   border-right:1px solid #ffb300;
 }
 
@@ -182,7 +212,7 @@ h2{
 
 .info h3{
   margin-top:10px;
-  font-size:1.8rem;
+  font-size:1.4rem;
 }
 
 .blue{
@@ -195,17 +225,29 @@ h2{
     font-size:3rem;
   }
 
+  .countdown{
+    gap:10px;
+  }
+
   .box{
-    width:120px;
-    height:120px;
+    width:110px;
+    height:110px;
   }
 
   .box span{
-    font-size:2.8rem;
+    font-size:2.5rem;
+  }
+
+  .colon{
+    display:none;
   }
 
   h2{
     font-size:3rem;
+  }
+
+  .tagline{
+    font-size:1rem;
   }
 
   .info{
@@ -213,75 +255,6 @@ h2{
   }
 
   .info h3{
-    font-size:1rem;
+    font-size:.95rem;
   }
-  /* VHS Scanlines */
-.scanlines{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-  repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 2px,
-    rgba(255,255,255,0.03) 4px
-  );
-  z-index:999;
-}
-
-/* Blinking REC */
-.rec{
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  0%{opacity:1;}
-  50%{opacity:.3;}
-  100%{opacity:1;}
-}
-
-/* Better Countdown Glow */
-.box span{
-  text-shadow:
-    0 0 10px #ffb300,
-    0 0 20px #ffb300,
-    0 0 40px #ffb300,
-    0 0 60px #ffb300;
-}
-
-/* Hover Animation */
-.box{
-  transition:.3s;
-}
-
-.box:hover{
-  transform:translateY(-8px);
-  box-shadow:
-    0 0 20px #ffb300,
-    0 0 50px rgba(255,179,0,.6);
-}
-
-/* KAIROS Glow */
-h2{
-  animation:logoGlow 2s infinite alternate;
-}
-
-@keyframes logoGlow{
-  from{
-    text-shadow:0 0 10px #ffb300;
-  }
-
-  to{
-    text-shadow:
-      0 0 20px #ffb300,
-      0 0 50px #ffb300;
-  }
-}
-
-/* Prevent scrolling */
-body{
-  overflow-x:auto;
-  overflow-y:auto;
-}
 }
