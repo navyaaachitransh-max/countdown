@@ -281,6 +281,7 @@ h2{
 
 /* Prevent scrolling */
 body{
-  overflow:hidden;
+  overflow-x:auto;
+  overflow-y:auto;
 }
 }
