@@ -1,43 +1,23 @@
-const targetDate =
-new Date("2026-06-10T16:30:00").getTime();
+body{
+  background:black;
+  color:white;
 
-function updateCountdown(){
+  display:flex;
+  flex-direction:column;
 
-  const now = new Date().getTime();
+  justify-content:center;
+  align-items:center;
 
-  const distance =
-  targetDate - now;
+  height:100vh;
 
-  const days =
-  Math.floor(distance/(1000*60*60*24));
-
-  const hours =
-  Math.floor(
-    (distance%(1000*60*60*24))
-    /(1000*60*60)
-  );
-
-  const minutes =
-  Math.floor(
-    (distance%(1000*60*60))
-    /(1000*60)
-  );
-
-  const seconds =
-  Math.floor(
-    (distance%(1000*60))
-    /1000
-  );
-
-  document.getElementById(
-    "countdown"
-  ).innerHTML =
-  `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  font-family:Georgia;
 }
 
-updateCountdown();
+h1{
+  font-size:5rem;
+  color:gold;
+}
 
-setInterval(
-  updateCountdown,
-  1000
-);
+#countdown{
+  font-size:3rem;
+}
